@@ -1,0 +1,14 @@
+.box {
+    background-color: blue;
+    margin: 1px;
+    flex: 1 0 auto;
+}
+
+#grid-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.layers {
+    display: flex;
+}
