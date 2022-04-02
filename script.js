@@ -1,19 +1,23 @@
 let grid_container = document.querySelector('#grid-container');
-let gridSize = 16;
+let gridSize;
 let currentLayer;
 let width;
 const resetBtn = document.querySelector('.resetButton');
 
-resetBtn.addEventListener('click', function(event){
-  const boxes = document.querySelectorAll('.box');
-  boxes.forEach(box => {
-    box.remove();
-  });
-  createGrid(gridSize);
-})
-createGrid(gridSize);
+promptGridSize();
 
-  // Create Squared Divs
+function promptGridSize() {
+  let inputValue = Math.round(prompt('Enter desired grid size'));
+  if(inputValue > 0 && inputValue <= 100) {
+    createGrid(inputValue);
+  } else {
+    alert('Please enter a number between 1 and 100');
+    promptGridSize();
+  }
+}
+
+
+
 function createDiv(size) {
     const div = document.createElement('div');
     div.classList.add('box');
@@ -38,7 +42,16 @@ function createGrid (size) {
     grid_container.appendChild(newParent(i));
     for(let j = 0; j <= size; j++) {
       width = window.innerHeight;
-      currentLayer.appendChild(createDiv(500 / gridSize));
+      currentLayer.appendChild(createDiv(500 / size));
     }
   }
 }
+
+
+resetBtn.addEventListener('click', function(event){
+  const boxes = document.querySelectorAll('.box');
+  boxes.forEach(box => {
+    box.remove();
+  });
+  promptGridSize();
+})
