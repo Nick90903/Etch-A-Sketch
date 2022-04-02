@@ -2,7 +2,15 @@ let grid_container = document.querySelector('#grid-container');
 let gridSize = 16;
 let currentLayer;
 let width;
+const resetBtn = document.querySelector('.resetButton');
 
+resetBtn.addEventListener('click', function(event){
+  const boxes = document.querySelectorAll('.box');
+  boxes.forEach(box => {
+    box.remove();
+  });
+  createGrid(gridSize);
+})
 createGrid(gridSize);
 
   // Create Squared Divs
@@ -34,4 +42,3 @@ function createGrid (size) {
     }
   }
 }
-s
